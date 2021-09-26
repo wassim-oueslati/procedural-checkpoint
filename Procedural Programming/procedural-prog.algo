@@ -1,0 +1,85 @@
+/********************************************************* Procedural programming checkpoint USING A PROCEDURE ****************************************************/
+PROCEDURE dot_product(t1, t2 : ARRAY_OF FLOAT[20], VAR ps)
+VAR
+    ps : FLOAT:=0;
+    i:INTEGER;
+
+BEGIN
+
+    FOR i FROM 0 TO t1.length-1 STEP step  DO
+        ps+=t1[i]*t2[i];
+    END_FOR
+END
+
+ALGORITHM algorithm_name
+VAR
+   n, i:integer;
+   v1 : ARRAY_OF FLOAT[20];
+   v2 : ARRAY_OF FLOAT[20];
+
+BEGIN
+
+    write('Enter the number of pairs of vectors')
+    read(n)
+
+    FOR i FROM 1 TO n STEP 1  DO
+        write('Enter the first vector')
+        
+        FOR i FROM 0 TO max STEP 19  DO
+            read(v1[i])
+        END_FOR
+        write('Enter the second vector')
+        FOR i FROM 0 TO max STEP 19  DO
+            read(v2[i])
+        END_FOR
+        dot_product(v1, v2, ps)
+        IF (ps=0) THEN
+            write('Les vecteur V1 et V2 sont orthogonaux')
+        ELSE
+            write('Les vecteur V1 et V2 ne sont pas orthogonaux')
+        END_IF
+    END_FOR
+END
+
+/********************************************************* Procedural programming checkpoint USING A FUNCTION *******************************************************/
+FUNCTION dot_product(t1, t2 : ARRAY_OF FLOAT[20]):INTEGER
+VAR
+    ps : FLOAT:=0;
+    i:INTEGER;
+
+BEGIN
+
+    FOR i FROM 0 TO t1.length-1 STEP step  DO
+        ps+=t1[i]*t2[i];
+    END_FOR
+    return ps;
+END
+
+ALGORITHM algorithm_name
+VAR
+   n, i, ps : INTEGER;
+   v1 : ARRAY_OF FLOAT[20];
+   v2 : ARRAY_OF FLOAT[20];
+
+BEGIN
+
+    write('Enter the number of pairs of vectors')
+    read(n)
+
+    FOR i FROM 1 TO n STEP 1  DO
+        write('Enter the first vector')
+        FOR i FROM 0 TO max STEP 19  DO
+            read(v1[i])
+        END_FOR
+        write('Enter the second vector')
+        FOR i FROM 0 TO max STEP 19  DO
+            read(v2[i])
+        END_FOR
+        ps := dot_product(v1, v2)
+        IF (ps=0) THEN
+            write('Les vecteur V1 et V2 sont orthogonaux')
+        ELSE
+            write('Les vecteur V1 et V2 ne sont pas orthogonaux')
+        END_IF
+    END_FOR
+END
